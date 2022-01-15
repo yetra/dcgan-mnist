@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/app.css">
+
+    <title>Generate MNIST images with DCGAN</title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <main role="main" class="wrapper flex-grow-1">
+        <section class="jumbotron text-center">
+            <div class="container">
+                <h1 class="jumbotron-heading">Generate MNIST images with DCGAN</h1>
+                <p class="lead text-muted">Create MNIST images from random noise vectors with the <a href="https://arxiv.org/abs/1511.06434">DCGAN</a> generator and classify them using the chosen target model.</p>
+
+                <form action="{{ url_for('images') }}" method="post">
+                    <div class="form-group row">
+                        <label for="target-select" class="col-sm-2 col-form-label">Target model</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" name="target-select" id="target-select">
+                                <option value="mnist_conv_target" selected>MNISTConvTarget</option>
+                            </select>
+                         </div>
+                    </div>
+
+                    <p>
+                        <button type="submit" class="btn btn-primary my-2" value="generate">Generate</button>
+                    </p>
+                </form>
+            </div>
+        </section>
+
+        <section class="images">
+            <div class="container">
+                {% if image_path %}
+                <img class="mx-auto d-block img-fluid" src="{{ image_path }}" alt="Generated MNIST images with assigned labels and probabilities."/>
+                {% endif %}
+            </div>
+        </section>
+    </main>
+
+    <footer class="mt-auto text-muted navbar-fixed-bottom">
+        <div class="container">
+            <p>&copy; Bruna Dujmovic, 2022. Models available on <a href="https://github.com/yetra/gan-attacks">GitHub</a>.</p>
+        </div>
+    </footer>
+</body>
+</html>
