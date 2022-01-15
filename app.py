@@ -11,8 +11,8 @@ NUM_IMAGES = 16
 LATENT_DIM = 100
 INPUT_SHAPE = (28, 28, 1)
 
-GAN_WEIGHTS = '../weights/dcgan_mnist_20220114144039.h5'
-TARGET_WEIGHTS = '../weights/mnist_conv_target_20220106120545.h5'
+GAN_WEIGHTS = 'weights/dcgan_mnist_20220114144039.h5'
+TARGET_WEIGHTS = 'weights/mnist_conv_target_20220106120545.h5'
 
 
 def load_gan(weights_path, latent_dim=LATENT_DIM, input_shape=INPUT_SHAPE):
